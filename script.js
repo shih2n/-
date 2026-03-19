@@ -919,11 +919,7 @@ function init() {
         if (typeof showAuthForm === "function") showAuthForm();
     }
 }
-function displayQuestion() {
-    if (!questions || !questions[currentQuestionIndex]) return; 
-    const questionData = questions[currentQuestionIndex];
-    const messageBox = document.getElementById('message');
-    const progress = (currentQuestionIndex / questions.length) * 100;
+
 
 
     messageBox.innerHTML = `
