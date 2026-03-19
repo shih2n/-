@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тренажер ОГЭ 2026</title>
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <style>
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        #message {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            margin-bottom: 12px;
+            padding: 16px 20px;
+            border: 2px solid #edf2f7;
+            border-radius: 16px;
+            background: #4299e1;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(66, 153, 225, 0.2);
+        }
+
+        /* Общие стили для кнопок в углах */
+        #shareBtn, #openProfile {
+            position: fixed;
+            width: auto !important;
+            padding: 10px 15px;
+            z-index: 2000;
+            background: white;
+            color: #4299e1;
+            border: 2px solid #4299e1;
+            border-radius: 12px;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #shareBtn { top: 20px; left: 20px; display: none; }
+        #openProfile { top: 20px; right: 20px; }
+
+        #profileBox {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            z-index: 2001;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+
+        #resource-links {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+            max-width: 200px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="openProfile">👤 Аккаунт</button>
+    <button id="shareBtn">🔗 Поделиться</button>
+
+    <div id="message">
+        <h1>Тренажер ОГЭ</h1>
+        <p>Нажми на кнопку, чтобы начать подготовку</p>
+        <button onclick="showAuthForm()">Начать тест</button>
+    </div>
+
+    <div id="profileBox">
+        <h2>Личный кабинет</h2>
+        <div style="margin-bottom: 20px; text-align: left; background: #f7fafc; padding: 15px; border-radius: 12px;">
+            <p><strong>Статус:</strong> Ученик</p>
+            <p><strong>Решено задач:</strong> <span id="solvedCount">0</span></p>
+        </div>
+        <button onclick="window.open('https://t.me/Maxim2143254', '_blank')" style="background: #48bb78; border: none;">Поддержка</button>
+        <hr style="border: 1px solid #edf2f7; margin: 20px 0;">
+        <h3>Оставить отзыв</h3>
+        <textarea id="reviewText" placeholder="Напишите ваше мнение..." style="width: 100%; height: 80px; border-radius: 12px; border: 2px solid #edf2f7; padding: 10px; font-family: inherit; resize: none; margin-bottom: 10px; box-sizing: border-box;"></textarea>
+        <button id="sendReview" style="background: #4299e1; color: white; border: none; padding: 12px;">Отправить отзыв</button>
+        <div id="reviewsList" style="margin-top: 20px; text-align: left; max-height: 150px; overflow-y: auto; font-size: 14px;"></div>
+        <button id="closeProfileBtn" style="background: #edf2f7; color: #4a5568; border: none; margin-top: 10px;">Закрыть</button>
+    </div>
+
+    <div id="overlay"></div>
+
+    <div id="resource-links">
+        <strong>📚 Материалы:</strong>
+        <div id="links-container">
+            <a href="https://inf-oge.sdamgia.ru" target="_blank" style="display:block; color:#4299e1; margin-top:5px; text-decoration: none;">Решу ОГЭ</a>
+        </div>
+    </div> 
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
