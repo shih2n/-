@@ -921,6 +921,9 @@ function init() {
 }
 
 
+function displayQuestion() {
+    const questionData = questions[currentQuestion]; // Убедитесь, что эти переменные у вас созданы
+    const progress = ((currentQuestion + 1) / questions.length) * 100;
 
     messageBox.innerHTML = `
         <div style="width: 100%; background: #edf2f7; height: 8px; border-radius: 10px; margin-bottom: 20px; overflow: hidden;">
@@ -942,7 +945,7 @@ function init() {
         const button = document.createElement('button');
         button.innerText = option;
         button.onclick = () => checkAnswer(index);
-        container.appendChild(button);
+        container.appendChild(button); // Перенес внутрь цикла
     });
 }
 
